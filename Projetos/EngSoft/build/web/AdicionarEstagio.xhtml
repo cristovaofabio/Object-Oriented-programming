@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <meta charset="utf-8"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Adicionar estagio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>
+        <link rel="stylesheet" href="css/materialize.css"/>
+        <link rel="stylesheet" href="custom.css"/>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                   -moz-background-size: cover;
+                   -o-background-size: cover;
+                   background-size: cover;       
+            }   
+        </style>
+    </h:head>
+    <body>
+        ${loginBean.permissao()}
+              <script src="js/materialize.js"></script>
+        <center>
+            <div class="section"></div><div class="section"></div>
+            <div class="container">
+                <div class="card-panel grey lighten-3 row z-depth-3" >
+        <h:form>
+            <p:panel id="panel"  style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="8" cellpadding="5">
+                    <h:outputLabel for="txt3" value="CNPJ DA EMPRESA:" />
+                        <h:selectOneMenu id="txt3" value="#{estagioBean.estagio.cnpjEmpresa}" required="true" label="Text 2">
+                            <f:selectItem itemLabel="#{loginBean.empresa.cnpj}" itemValue="#{loginBean.empresa.cnpj}" />
+                        </h:selectOneMenu>
+                    <h:outputText value="#{loginBean.empresa.cnpj}" />
+                    <p:message for="txt3" />
+                </h:panelGrid>
+            </p:panel>
+            
+            <div class="row">
+                <div class="input-field col s6">
+                    <h:inputText id="cnpj" value="#{estagioBean.estagio.funcao}"/>
+                    <label for="cnpj">Função</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <h:inputText id="descricao" value="#{estagioBean.estagio.descricao}"/>
+                    <label for="descricao">Descrição</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <p:inputText id="dataIni" value="#{estagioBean.estagio.inioferta}" class="datep"/>
+                    <script>
+                        $('.datep').pickadate({
+                        selectMonths: true, // Creates a dropdown to control month
+                        selectYears: 15 // Creates a dropdown of 15 years to control year
+                        });
+                    </script>
+                    <label for="dataIni">Inicio da Oferta</label>
+                </div>
+                <div class="input-field col s6">
+                    <p:inputText id="dataFim" value="#{estagioBean.estagio.fimoferta}" class="datepicker"/>
+
+                    <script>
+                        $('.datepicker').pickadate({
+                        selectMonths: true, // Creates a dropdown to control month
+                        selectYears: 15 // Creates a dropdown of 15 years to control year
+                        });
+                    </script>
+                    <label for="dataFim">Fim da Oferta</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <h:inputText id="cidade" value="#{estagioBean.estagio.cidadeEmpresa}"/>
+                    <label for="cidade">Cidade</label>
+                </div>
+                <div class="input-field col s6">
+                    <h:inputText id="estado" value="#{estagioBean.estagio.estadoEmpresa}"/>
+                    <label for="estado">Estado</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6" >
+                    <p:inputText id="vagas" value="#{estagioBean.estagio.quantidadeVagas}"/>
+                    <label for="vagas">Quantidade de vagas</label>
+                </div>
+            </div>
+                <h:commandButton value="Incluir" action="#{estagioBean.adicionar}"/>
+                
+        </h:form>
+             </div>
+            </div>
+        </center>
+    </body>
+</html>

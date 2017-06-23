@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Buscar Estágio</title>
+        <meta charset="utf-8"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>
+        <link rel="stylesheet" href="custom.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                   -moz-background-size: cover;
+                   -o-background-size: cover;
+                   background-size: cover;       
+            }   
+        </style>
+    </h:head>
+    <h:body>
+        ${loginclienteBean.permissao()}
+        <nav class="indigo lighten-2">
+            <div class="container">
+                <div class="nav-wrapper ">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                        <li>BUSCAGIO</li>
+                    </ul>
+                    <ul id="nav-mobile" class="center hide-on-med-and-down ">
+                        <li>#{loginclienteBean.cliente.nome}</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h:form id="buscaForm">
+            <div class='row'>
+                <div class='input-field col s4'>
+                    <p:inputText id="cidade" value="#{buscaBean.cidade}" ></p:inputText>
+                    <label for='cidade'>Cidade</label>
+                    <p:spacer></p:spacer>
+                    <p:message for="cidade" ></p:message>
+                </div>
+                <div class='input-field col s4'>
+                    <p:inputText id="estado" value="#{buscaBean.estado}" ></p:inputText>
+                    <label for='estado'>Estado</label>
+                    <p:spacer></p:spacer>
+                    <p:message for="estado"></p:message>
+                </div>
+                <div class='input-field col s4'>
+                    <p:commandButton action="#{buscaBean.buscaProject}" value="Busca" update="buscaForm" ajax="true"></p:commandButton>
+                </div>
+                <p:growl id="msg" showDetail="true" life="3000" />
+            </div>
+            <div>
+                <p:dataTable value="#{buscaBean.getEstagios(buscaBean.cidade, buscaBean.estado)}" var="estagio">
+                    <f:facet name="caption">Lista de estagios</f:facet>
+                    <p:column>
+                        <f:facet name="header">Função</f:facet>
+                        #{estagio.funcao}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Descrição</f:facet>
+                        #{estagio.descricao}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Início da oferta</f:facet>
+                        #{estagio.inioferta}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Fim da oferta</f:facet>
+                        #{estagio.fimoferta}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Quantidade de vagas</f:facet>
+                        #{estagio.quantidadeVagas}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Quantidade de inscritos</f:facet>
+                        #{buscaBean.getCandidatosInscritos(estagio.id)}
+                    </p:column>
+                    <p:column headerText="Remover">
+                        <f:facet name="header">Ação</f:facet>
+                        <h:commandButton value="Inscrever" action="#{clienteestagioDAO.adiciona(loginclienteBean.cliente.cpf, estagio.id, loginclienteBean.cliente.email)}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+        
+    </h:body>
+</html>

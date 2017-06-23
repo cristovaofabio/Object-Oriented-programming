@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        
+        <title>login</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>
+        <link rel="stylesheet" href="css/materialize.css"/>
+        <link rel="stylesheet" href="custom.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover; 
+                     
+            }   
+        </style>
+    </h:head>
+    <h:body>
+        <center>
+        <div class="section"></div><div class="section"></div>
+        <div class="container">
+                  <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+        <h:form id="loginFormCliente">
+            <div class="row">
+                <div class="col s12">Buscagio
+                  </div>
+                </div>
+              <div class="row">
+                <div class="col s12">
+                  </div>
+                </div>
+            
+           <div class="row">
+                <div class="input-field col s12">
+                    <p:inputText id="username" value="#{loginclienteBean.uname}" ></p:inputText>
+                  <label for="username">Email</label>
+                  <p:spacer></p:spacer>
+ 
+                    <p:message for="username" ></p:message>
+                  </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <p:password id="password" value="#{loginclienteBean.password}"  feedback="false"></p:password>
+                    <label for="password">Senha</label>
+                  
+                  <p:spacer></p:spacer>
+ 
+                    <p:message for="password" ></p:message>
+                  </div>
+                </div>
+            <div class="row">
+                <p:commandButton action="#{loginclienteBean.loginProject}" value="Login" update="loginFormCliente" ajax="true"></p:commandButton>
+            <p:commandButton action="AdicionarCliente.xhtml" value="Cadastrar"  ajax="false"/>
+            </div>
+            <p:growl id="msg" showDetail="true" life="3000" />
+            
+        </h:form>
+                  </div>
+        </div>
+        </center>
+    </h:body> 
+</html>

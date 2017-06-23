@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <meta charset="utf-8"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Adicionar Cliente</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>
+        <link rel="stylesheet" href="css/materialize.css"/>
+        <link rel="stylesheet" href="custom.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover; 
+            }   
+        </style>
+    </h:head>
+    <body>
+        <script src="js/materialize.js"></script>
+        <center>
+            <div class="section"></div><div class="section"></div>
+            <div class="container">
+                <div class="card-panel grey lighten-3 row z-depth-3" >
+                     <h:form>
+                         
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <p:inputText id="cpf" value="#{clienteBean.cliente.cpf}"/>
+                            <label for="cpf">CPF</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <p:inputText id="nome" value="#{clienteBean.cliente.nome}"/>
+                            <label for="nome">Nome completo</label>
+                        </div>
+                    </div>
+                         
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <p:inputText id="dataNas" value="#{clienteBean.cliente.dataNascimento}" class="datepicker"/>
+                            <script>
+                        $('.datepicker').pickadate({
+                        selectMonths: true, // Creates a dropdown to control month
+                        selectYears: 15 // Creates a dropdown of 15 years to control year
+                        });
+                    </script>
+                            <label for="dataNas">Data de nascimento</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <p:inputText id="email" value="#{clienteBean.cliente.email}"/>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <p:inputText id="endereco" value="#{clienteBean.cliente.endereco}"/>
+                            <label for="endereco">Endereco</label>
+                        </div>
+                        
+                        
+                        <div class="input-field col s6">
+                            <p:inputText id="estado" value="#{clienteBean.cliente.estado}"/>
+                            <label for="estado">Estado</label>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <p:inputText id="cidade" value="#{clienteBean.cliente.cidade}"/>
+                            <label for="cidade">Cidade</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <p:password id="senha" value="#{clienteBean.cliente.senha}"/>
+                            <label for="senha">Senha</label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <p:commandButton value="Adicionar" action="#{clienteBean.adicionar}"/>
+                        <p:commandButton value="Voltar" action="loginCliente.xhtml"/>
+                    </div>
+                </h:form>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>

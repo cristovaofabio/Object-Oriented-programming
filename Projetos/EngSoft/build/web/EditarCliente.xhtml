@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Alterar Cliente</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8"/>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>
+        <link rel="stylesheet" href="css/materialize.css"/>
+        <link rel="stylesheet" href="custom.css"/>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;       
+            }   
+        </style>
+    </h:head>
+    ${loginclienteBean.permissao()}
+    <nav class="indigo lighten-2">
+        <div class="container">
+            <div class="nav-wrapper ">
+                <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                    <li>BUSCAGIO</li>
+                </ul>
+                <ul id="nav-mobile" class="center hide-on-med-and-down ">
+                    <li>#{loginclienteBean.cliente.nome}</li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <body>
+        <script src="js/materialize.js"></script>
+        <center>
+            <div class="section"></div><div class="section"></div>
+            <div class="container">
+                <div class="card-panel grey lighten-3 row z-depth-3" >
+                    <h:form>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <p:inputText id="email" value="#{loginclienteBean.cliente.email}"/>
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <p:inputText id="endereco" value="#{loginclienteBean.cliente.endereco}"/>
+                                <label for="endereco">Endereço</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <p:inputText id="estado" value="#{loginclienteBean.cliente.estado}"/>
+                                <label for="estado">Estado</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <p:inputText id="cidade" value="#{loginclienteBean.cliente.cidade}"/>
+                                <label for="cidade">Cidade</label>
+                            </div>
+                        </div>
+                        <h:commandButton value="Alterar" action="#{clienteDAO.altera(loginclienteBean.cliente, loginclienteBean.cliente.cpf)}"/>
+                        <br/>
+                    </h:form>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>

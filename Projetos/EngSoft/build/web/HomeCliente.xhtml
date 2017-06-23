@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link type="text/css" rel="stylesheet" href="/TestandoMaterialize/css/materialize.css" media="screen,projection"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"/>       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+        <style>
+            body {
+                background-image: url("imagens/white.jpg");
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;       
+            }   
+        </style>
+    </h:head>
+    <body>
+        ${loginclienteBean.permissao()}
+        <nav class="indigo lighten-2">
+            <div class="container">
+                <div class="nav-wrapper ">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                        <li>BUSCAGIO</li>
+                    </ul>
+                    <ul id="nav-mobile" class="center hide-on-med-and-down ">
+                        <li>Bem vindo, #{loginclienteBean.cliente.nome}</li>
+                    </ul>
+                </div> 
+            </div>
+        </nav>
+        <script src="js/materialize.js"></script>
+        <center>
+            <div class="section"></div><div class="section"></div>
+            <div class="container">
+                <div class="card-panel grey lighten-3 row z-depth-3" >
+                    <h:form>
+                        <div>
+                            <p:dataTable value="#{buscaBean.getEstagiCliente(loginclienteBean.cliente.cpf)}" var="estagio">
+                                <f:facet name="caption">Lista de estagios</f:facet>
+                                <p:column>
+                                    <f:facet name="header">Função</f:facet>
+                                        #{estagio.funcao}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Descrição</f:facet>
+                                        #{estagio.descricao}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Início da oferta</f:facet>
+                                        #{estagio.inioferta}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Fim da oferta</f:facet>
+                                        #{estagio.fimoferta}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Quantidade de vagas</f:facet>
+                                        #{estagio.quantidadeVagas}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Quantidade de inscritos</f:facet>
+                                        #{buscaBean.getCandidatosInscritos(estagio.id)}
+                                </p:column>
+
+                            </p:dataTable>
+                        </div>
+
+                        <p:dock position="bottom">
+                            <p:menuitem value="Procurar estágio" icon="imagens/search.png" url="BuscarEstagio.xhtml" />
+                            <p:menuitem value="Editar perfil" icon="imagens/edit.png" url="faces/EditarCliente.xhtml" />
+                            <p:menuitem value="Sair" icon="imagens/out.png" action="${loginclienteBean.logout()}" />
+                        </p:dock>
+
+                    </h:form>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>
+
+
