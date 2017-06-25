@@ -88,7 +88,7 @@ public class EstagioBean {
                         new javax.mail.Authenticator() {
                              protected PasswordAuthentication getPasswordAuthentication() 
                              {
-                                   return new PasswordAuthentication("infobuscagio@gmail.com", "Universidade");
+                                   return new PasswordAuthentication("meuEmail", "MinhaSenha");
                              }
                         });
             /** Ativa Debug para sessão */
