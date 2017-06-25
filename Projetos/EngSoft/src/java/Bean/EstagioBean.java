@@ -96,7 +96,7 @@ public class EstagioBean {
             try {
 
                   Message message = new MimeMessage(session);
-                  message.setFrom(new InternetAddress("infobuscagio@gmail.com")); //Remetente
+                  message.setFrom(new InternetAddress("meuEmail")); //Remetente
 
                   Address[] toUser = InternetAddress //Destinatário(s)
                              .parse(email);  
