@@ -13,7 +13,7 @@ public class FuncionalidadeCONCRETCOMP extends FuncionalidadeCOMPONENT{
 
     @Override
     public void habilitar() {
-        System.out.println("Skype sem funcionalidades adicionais");
+        //System.out.println("Skype básico");
     }
     
 }

@@ -19,6 +19,7 @@ public class Skype {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         //Factory Method -- mensagem de vídeo ou texto
         FactoryMensagem factory = new FactoryMensagem();
         factory.getMensagem("Vídeo");
